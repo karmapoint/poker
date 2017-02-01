@@ -1,8 +1,8 @@
 require 'manifest'
 
-describe Poker
+describe "Poker" do
 
-  describe Card
+  describe Card do
     subject(:card) {Card.new(2, :spade)}
 
     describe "#initialize" do
@@ -32,11 +32,13 @@ describe Poker
       let("2ofspades") {Card.new(2, :spade)}
       let("8ofhearts") {Card.new(8, :heart)}
 
-      expect(2ofspades).to_not eq(8ofhearts)
+      it "can tell if 2 cards are the same" do
+        expect("2ofspades").to_not eq("8ofhearts")
+      end
     end
   end
 
-  describe Deck
+  describe Deck do
     subject(:deck) {Deck.new}
 
     describe "#initialize" do
@@ -65,12 +67,12 @@ describe Poker
     describe "#shuffle!" do
 
       it "shuffle the deck" do
-        original_deck = deck.dup
+        original_deck = deck.stack.dup
         deck.shuffle!
 
-        expect(original_deck.stack[0]).to_not eq(deck.stack[0])
-        expect(original_deck.stack[15]).to_not eq(deck.stack[15])
-        expect(original_deck.stack[40]).to_not eq(deck.stack[40)
+        expect(original_deck[0]).to_not eq(deck.stack[0])
+        expect(original_deck[15]).to_not eq(deck.stack[15])
+        expect(original_deck[40]).to_not eq(deck.stack[40])
       end
     end
 

@@ -1,2 +1,2 @@
-require 'rspec'
-require 'colorize'
+gem 'rspec'
+gem 'colorize'
