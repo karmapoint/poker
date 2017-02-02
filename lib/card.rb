@@ -1,10 +1,10 @@
 class Card
 
   attr_reader :value, :suit
-  
+
   SUITS = {
     :spade => "\u2660",
-    :heart => "u\2661",
+    :heart => "\u2661",
     :diamond => "\u2662",
     :club => "\u2663"
   }

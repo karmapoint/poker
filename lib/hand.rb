@@ -3,7 +3,7 @@ require_relative 'deck'
 
 class Hand
 
-  attr_reader :hand
+  attr_accessor :hand
 
   VALUATIONS = [
     :high_card,
@@ -62,7 +62,8 @@ class Hand
 
     elsif pair?
       pair = values.select { |card| values.count(card) == 2 }
-      leftovers = values.delete(pair[0]).sort
+      values.delete(pair[0])
+      leftovers = values.sort
       return [:pair, pair[0], leftovers.last]
 
     else
@@ -123,11 +124,11 @@ class Hand
   end
 
   def <=>(hand)
-    if VALUATIONS[self.valuation[0]].index > VALUATIONS[hand.valuation[0]].index
+    if VALUATIONS.index(self.valuation[0]) < VALUATIONS.index(hand.valuation[0])
       return -1
-    elsif VALUATIONS[self.valuation[0]].index == VALUATIONS[hand.valuation[0]].index
+    elsif VALUATIONS.index(self.valuation[0]) == VALUATIONS.index(hand.valuation[0])
       return tiebreaker(self, hand)
-    elsif VALUATIONS[self.valuation[0]].index < VALUATIONS[hand.valuation[0]].index
+    elsif VALUATIONS.index(self.valuation[0]) > VALUATIONS.index(hand.valuation[0])
       return 1
     end
   end
@@ -142,12 +143,10 @@ class Hand
       raise "double tie"
     end
   end
-
-
-
-  end
-
-
-
-
 end
+
+d = Deck.new
+h1 = Hand.new
+h2 = Hand.new
+h1.hand = [d.deal, d.deal, d.deal, d.deal, d.deal ]
+h2.hand  = [d.deal, d.deal, d.deal, d.deal, d.deal ]

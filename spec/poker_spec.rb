@@ -96,7 +96,7 @@ describe "Poker" do
     describe "#initialize" do
 
       it "creates an empty hand array" do
-        expect(hand.hand).to be(Array)
+        expect(hand.hand).to be_an(Array)
         expect(hand.hand).to be_empty
       end
 
@@ -105,7 +105,7 @@ describe "Poker" do
     describe "#<=>" do
 
       it "correctly compares the value of two hands" do
-        
+
       end
 
     end
