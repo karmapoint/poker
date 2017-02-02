@@ -70,9 +70,9 @@ describe "Poker" do
         original_deck = deck.stack.dup
         deck.shuffle!
 
-        expect(original_deck[0]).to_not eq(deck.stack[0])
-        expect(original_deck[15]).to_not eq(deck.stack[15])
-        expect(original_deck[40]).to_not eq(deck.stack[40])
+        expect(original_deck).to_not eq(deck.stack)
+        # expect(original_deck[15]).to_not eq(deck.stack[15])
+        # expect(original_deck[40]).to_not eq(deck.stack[40])
       end
     end
 
@@ -88,5 +88,37 @@ describe "Poker" do
         expect(deck.stack.length).to eq(51)
       end
     end
+  end
+
+  describe Hand do
+    subject(:hand) {Hand.new}
+
+    describe "#initialize" do
+
+      it "creates an empty hand array" do
+        expect(hand.hand).to be(Array)
+        expect(hand.hand).to be_empty
+      end
+
+    end
+
+    describe "#<=>" do
+
+      it "correctly compares the value of two hands" do
+        
+      end
+
+    end
+
+    describe "#value" do
+
+      it "returns the best valuation"
+
+
+    end
+
+
+
+
   end
 end
